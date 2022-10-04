@@ -9,6 +9,6 @@
 
     <Grid Background="#4CFF0000">
         <Button Content="Button" Margin="0,140,0,0" VerticalAlignment="Top" Background="#99D6D6D6" HorizontalAlignment="Center" Click="Button_Click"/>
-        <TextBox Name="TextBox1" HorizontalAlignment="Left" Margin="108,250,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="321"/>
+        <TextBox Name="TextBox1" HorizontalAlignment="Left" Margin="108,250,0,0" TextWrapping="Wrap" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="321"/>
     </Grid>
 </Page>

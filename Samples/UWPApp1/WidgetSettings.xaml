@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBox HorizontalAlignment="Left" Margin="95,111,0,0" TextWrapping="Wrap" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="444"/>
 
     </Grid>
 </Page>

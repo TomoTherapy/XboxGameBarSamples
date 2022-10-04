@@ -1,8 +1,10 @@
 ﻿using Microsoft.Gaming.XboxGameBar;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -21,37 +23,52 @@ namespace UWPApp1
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class BlankPage1 : Page, INotifyPropertyChanged
     {
         private bool flag = false;
         private XboxGameBarWidget widget;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public string Text { get => ((App)Application.Current).Text; set { ((App)Application.Current).Text = value; OnPropertyChanged(); } }
+
         public BlankPage1()
         {
             this.InitializeComponent();
+
+            DataContext = this;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             widget = e.Parameter as XboxGameBarWidget;
 
             widget.SettingsClicked += Widget_SettingsClicked;
-            //base.OnNavigatedTo(e);
+
+            await widget.CenterWindowAsync();
         }
 
         private async void Widget_SettingsClicked(XboxGameBarWidget sender, object args)
         {
             await sender.ActivateSettingsAsync();
+
+            await sender.CenterWindowAsync();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (flag)
-                TextBox1.Text = "Jesus Fuck";
+                Text = "Jesus Fuck";
             else
-                TextBox1.Text = "Allah Fuck";
+                Text = "Allah Fuck";
 
             flag = !flag;
+
+            //await (sender as XboxGameBarWidget).CenterWindowAsync();
         }
     }
 }
