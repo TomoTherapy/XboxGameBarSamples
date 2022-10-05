@@ -82,9 +82,6 @@ namespace UWPApp1
                     Window.Current.Activate();
                 }
             }
-
-
-            //base.OnActivated(args);
         }
 
         private void WidgetSettings_Closed(object sender, CoreWindowEventArgs e)
@@ -98,8 +95,6 @@ namespace UWPApp1
             blankPage1 = null;
             Window.Current.Closed -= BlankPage1_Closed;
         }
-
-
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

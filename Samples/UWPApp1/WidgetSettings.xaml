@@ -6,10 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="500" Height="500">
 
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="95,111,0,0" TextWrapping="Wrap" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="444"/>
+        <TextBox HorizontalAlignment="Left" Margin="95,111,0,0" TextWrapping="Wrap" Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="338"/>
 
     </Grid>
 </Page>

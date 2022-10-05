@@ -32,7 +32,9 @@ namespace UWPApp1
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public string Text { get => ((App)Application.Current).Text; set { ((App)Application.Current).Text = value; OnPropertyChanged(); } }
+        public event EventHandler PropertyChangedEvent;
+
+        public string Text { get => ((App)Application.Current).Text; set { ((App)Application.Current).Text = value; OnPropertyChanged(); PropertyChangedEvent(null, null); } }
 
         public WidgetSettings()
         {
